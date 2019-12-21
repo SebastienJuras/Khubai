@@ -12,9 +12,8 @@
    ========================================================================== */
 
 html {
-  color: #222;
-  font-size: 1em;
-  line-height: 1.4;
+
+
 }
 
 /*
@@ -98,6 +97,34 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+   main {
+    margin:0;
+    padding:0;  
+    background-image: url(/img/ESN-bg.jpg); 
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+    background-repeat: no-repeat;
+    background-position: top;
+    width : auto;
+    height: 1034px;
+    
+   }
+
+   header {
+     width:100%;
+   }
+
+   .container-main{
+    height:400px;
+  }
+
+  #landing{
+    width:50%;
+  }
+
+  #landing-text{
+    background-color: rgba(20, 2, 53, 0.45)
+  }
 /* ==========================================================================
    Helper classes
    ========================================================================== */
