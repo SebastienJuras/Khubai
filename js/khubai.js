@@ -39,6 +39,11 @@ function simulerSalaire() {
     }
     /* Calcul remise client */
     var remiseClient = Math.round(tjm*0.12);
+    /* si tjm < 300, pas de remise client et offre encadrement & credit ne sont pas inclus */
+    if (tjm<300) {
+        remiseClient = 0;
+    }
+
     document.getElementById("remiseClientBase").innerHTML = remiseClient.toString() + "€";
     var encadrement = 0;
     if (document.getElementById('encadrementTrue').checked) {
@@ -48,7 +53,7 @@ function simulerSalaire() {
     }
     else
     {
-        encadrement = 25;
+        if (tjm>=300) {encadrement = 25;}
         /* affichafe de la valeur de la remise encadrement */
         document.getElementById("encadrementValeur").innerHTML = encadrement.toString() + "€";
     }   
@@ -59,13 +64,14 @@ function simulerSalaire() {
     }
     else
     {
-        credit = 10;
+        if (tjm>=300) {credit = 25;}
         /* affichafe de la valeur de la remise encadrement */
         document.getElementById("creditValeur").innerHTML = credit.toString() + "€";
     }   
+
     var remiseClientTotal = remiseClient + encadrement + credit;
     document.getElementById("remiseClient").innerHTML = remiseClientTotal.toString() + "€";
-    tjm = tjm - remiseClient -35 ; /* le tjm -35 correspond aux services fournies par le client et pas par le consultant, ie credit & */
+    if (tjm>=300) {tjm = tjm - remiseClient -35 ;} /* le tjm -35 correspond aux services fournies par le client et pas par le consultant, ie credit & */
     /* Calcul du salaire et revenu */
 
     var salaireTmp = tjm*nbjour/12 - fdp - ursaff - assurance - retraite - administration - employabilite - formation -mutuelle;
