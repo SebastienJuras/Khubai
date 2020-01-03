@@ -1,0 +1,664 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Khubai, mon panneau d'administration</title>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/vendor.css">
+  <link rel="stylesheet" href="css/khubai.css" type="text/css" media="screen"/>	
+</head>
+<body>
+    <div class="main-wrapper">
+        <div class="app" id="app">
+            <header class="header">
+                <div class="header-block header-block-collapse d-lg-none d-xl-none">
+                    <button class="collapse-btn" id="sidebar-collapse-btn">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                </div>
+                <div class="header-block header-block-search">
+                    <form role="search">
+                        <div class="input-container">
+                            <i class="fa fa-search"></i>
+                            <input type="search" placeholder="Search">
+                            <div class="underline"></div>
+                        </div>
+                    </form>
+                </div>
+                <div class="header-block header-block-nav">
+                    <ul class="nav-profile">
+                        <li class="notifications new">
+                            <a href="" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <sup>
+                                    <span class="counter">8</span>
+                                </sup>
+                            </a>
+                            <div class="dropdown-menu notifications-dropdown-menu">
+                                <ul class="notifications-container">
+                                    <li>
+                                        <a href="" class="notification-item">
+                                            <div class="img-col">
+                                                <div class="img" style="background-image: url('assets/faces/3.jpg')"></div>
+                                            </div>
+                                            <div class="body-col">
+                                                <p>
+                                                    <span class="accent">Zack Alien</span> pushed new commit: <span class="accent">Fix page load performance issue</span>. </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="notification-item">
+                                            <div class="img-col">
+                                                <div class="img" style="background-image: url('assets/faces/5.jpg')"></div>
+                                            </div>
+                                            <div class="body-col">
+                                                <p>
+                                                    <span class="accent">Amaya Hatsumi</span> started new task: <span class="accent">Dashboard UI design.</span>. </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="" class="notification-item">
+                                            <div class="img-col">
+                                                <div class="img" style="background-image: url('assets/faces/8.jpg')"></div>
+                                            </div>
+                                            <div class="body-col">
+                                                <p>
+                                                    <span class="accent">Andy Nouman</span> deployed new version of <span class="accent">NodeJS REST Api V3</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <footer>
+                                    <ul>
+                                        <li>
+                                            <a href=""> View All </a>
+                                        </li>
+                                </ul>
+                                </footer>
+                            </div>
+                        </li>
+                        <li class="profile dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                <div class="img" style="background-image: url('https://avatars3.githubusercontent.com/u/3959008?v=3&s=40')">
+                                </div>
+                                <span class="name"> John Doe </span>
+                            </a>
+                            <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-user icon"></i> Profile </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-bell icon"></i> Notifications </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fa fa-gear icon"></i> Settings </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="login.html">
+                                    <i class="fa fa-power-off icon"></i> Logout </a>
+                            </ div>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+            <aside class="sidebar">
+                <div class="sidebar-container">
+                    <div class="sidebar-header">
+                        <div class="brand">
+                            <div class="logo">
+                                <span class="l l1"></span>
+                                <span class="l l2"></span>
+                                <span class="l l3"></span>
+                                <span class="l l4"></span>
+                                <span class="l l5"></span>
+                            </div> 
+                        </div>
+                    </div>
+                    <nav class="menu">
+                        <ul class="sidebar-menu metismenu" id="sidebar-menu">
+                            <li class="active">
+                                <a href="index.html">
+                                    <i class="fa fa-home"></i> Dashboard </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-th-large"></i> Items Manager <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="items-list.html"> Items List </a>
+                                    </li>
+                                    <li>
+                                        <a href="item-editor.html"> Item Editor </a>
+                                    </li>
+                                    </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-area-chart"></i> Charts <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="charts-flot.html"> Flot Charts </a>
+                                    </li>
+                                    <li>
+                                        <a href="charts-morris.html"> Morris Charts </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-table"></i> Tables <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="static-tables.html"> Static Tables </a>
+                                    </li>
+                                    <li>
+                                        <a href="responsive-tables.html"> Responsive Tables </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="forms.html">
+                                    <i class="fa fa-pencil-square-o"></i> Forms </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-desktop"></i> UI Elements <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="buttons.html"> Buttons </a>
+                                    </li>
+                                    <li>
+                                        <a href="cards.html"> Cards </a>
+                                    </li>
+                                    <li>
+                                        <a href="typography.html"> Typography </a>
+                                    </li>
+                                    <li>
+                                        <a href="icons.html"> Icons </a>
+                                    </li>
+                                    <li>
+                                        <a href="grid.html"> Grid </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-file-text-o"></i> Pages <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="login.html"> Login </a>
+                                    </li>
+                                    <li>
+                                        <a href="signup.html"> Sign Up </a>
+                                    </li>
+                                    <li>
+                                        <a href="reset.html"> Reset </a>
+                                    </li>
+                                    <li>
+                                        <a href="error-404.html"> Error 404 App </a>
+                                    </li>
+                                    <li>
+                                        <a href="error-404-alt.html"> Error 404 Global </a>
+                                    </li>
+                                    <li>
+                                        <a href="error-500.html"> Error 500 App </a>
+                                    </li>
+                                    <li>
+                                        <a href="error-500-alt.html"> Error 500 Global </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fa fa-sitemap"></i> Menu Levels <i class="fa arrow"></i>
+                                </a>
+                                <ul class="sidebar-nav">
+                                    <li>
+                                        <a href="#"> Second Level Item <i class="fa arrow"></i>
+                                        </a>
+                                        <ul class="sidebar-nav">
+                                            <li>
+                                                <a href="#"> Third Level Item </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> Third Level Item </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Second Level Item </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Second Level Item <i class="fa arrow"></i>
+                                        </a>
+                                        <ul class="sidebar-nav">
+                                            <li>
+                                                <a href="#"> Third Level Item </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> Third Level Item </a>
+                                            </li>
+                                            <li>
+                                                <a href="#"> Third Level Item <i class="fa arrow"></i>
+                                                </a>
+                                                <ul class="sidebar-nav">
+                                                    <li>
+                                                        <a href="#"> Fourth Level Item </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"> Fourth Level Item </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <footer class="sidebar-footer">
+                    <ul class="sidebar-menu metismenu" id="customize-menu">
+                        <li>
+                            <ul>
+                                <li class="customize">
+                                    <div class="customize-item">
+                                        <div class="row customize-header">
+                                            <div class="col-4">
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="title">fixed</label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label class="title">static</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label class="title">Sidebar:</label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="sidebarPosition" value="sidebar-fixed">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="sidebarPosition" value="">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label class="title">Header:</label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="headerPosition" value="header-fixed">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="headerPosition" value="">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <label class="title">Footer:</label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="footerPosition" value="footer-fixed">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-4">
+                                                <label>
+                                                    <input class="radio" type="radio" name="footerPosition" value="">
+                                                    <span></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="customize-item">
+                                        <ul class="customize-colors">
+                                            <li>
+                                                <span class="color-item color-red" data-theme="red"></span>
+                                            </li>
+                                            <li>
+                                                <span class="color-item color-orange" data-theme="orange"></span>
+                                            </li>
+                                            <li>
+                                                <span class="color-item color-green active" data-theme=""></span>
+                                            </li>
+                                            <li>
+                                                <span class="color-item color-seagreen" data-theme="seagreen"></span>
+                                            </li>
+                                            <li>
+                                                <span class="color-item color-blue" data-theme="blue"></span>
+                                            </li>
+                                            <li>
+                                                <span class="color-item color-purple" data-theme="purple"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                            <a href="">
+                                <i class="fa fa-cog"></i> Customize </a>
+                        </li>
+                    </ul>
+                </footer>
+            </aside>
+            <main>
+                <div class="table">
+                    <div class="row">
+                        <div class="col-sm-6 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title"> Votre situation actuelle </p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="input-group">
+                                        <div class="col-sm-8">
+                                            <label for="SalaireActuel">Votre contrat</label>
+                                        </div>
+                                        <select class="form-control form-control">
+                                            <option>CDI</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="col-sm-8">
+                                            <label for="SalaireActuel">Le taux journalier payé par le client</label>
+                                        </div>
+                                        <input type="number" onchange="simulerSalaire()" class="form-control" placeholder="" id="tjm" value="value">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">€</span>
+                                        </span>
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="col-sm-8">
+                                            <label for="SalaireActuel">Votre salaire mensuelle (brute)</label>
+                                        </div>
+                                        <input type="number" class="form-control" placeholder="" id="salaireActuel" value="value">
+                                        <span class="input-group-append">
+                                            <span class="input-group-text">€</span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title"> Notre simulation </p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <p class="text-center text-large" id="resultat">
+                                        <span class="align-middle">
+                                            Veuillez renseigner le taux journalier payé par le client afin de simuler votre salaire dans une entreprise décentralisé.
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title">Vos revenus mensuels</p>
+                                    </div>
+                                    <div class="SommeRevenu ">
+                                        <p class="title text-right" id="revenu"> - </p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Votre salaire de base :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="salaireBase">-</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label">Contrat avec RTT :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="rtt" type="radio" value="True" checked="checked" id="rttTrue">
+                                                <span>Oui</span>
+                                            </label>
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="rtt" type="radio" value="False" id="rttFalse">
+                                                <span>Non</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="rttValeur">-</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Votre réserve :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="reserve">-</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title">Vos services connexes</p>
+                                    </div>
+                                    <div class="SommeRevenu ">
+                                        <p class="title text-right" id="servicesConnexes"> - </p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Feuille de paye :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="feuilleDePaye"> 20 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Cotisation Ursaaf :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="ursaaf"> 1 200 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Retraite :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="retraite"> 300 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label">Mutuelle :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="mutuelle" type="radio" value="mutuelleStandard" checked="checked" id="mutuelleStandard">
+                                                <span>Stanard</span>
+                                            </label>
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="mutuelle" type="radio" value="mutuellePremium" id="mutuellePremium">
+                                                <span>Premium</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="mutuelleValeur"> 35 € </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Assurance :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="assurance"> 25 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Gestion administrative :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="administration"> 90 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Employabilité :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="employabilite"> 216 €</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Formation :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="formation">-</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Structure :</label>
+                                        </div>
+                                        <div class="input-group col-4" d-inline">
+                                            <label class="control-label" id="structure">-</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title">Remise client (par jour)</p>
+                                    </div>
+                                    <div class="SommeRevenu ">
+                                        <p class="title text-right" id="remiseClient"> - </p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <div class="row">
+                                        <div class="input-group col-8 d-inline">
+                                            <label class="control-label">Remise client de base :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="remiseClientBase">-</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label">Encadrement :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="encadrement" type="radio" value="True" checked="checked" id="encadrementTrue">
+                                                <span>Oui</span>
+                                            </label>
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="encadrement" type="radio" value="False" id="encadrementFalse">
+                                                <span>Non</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="encadrementValeur"> - </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label">Besoin de credit :</label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="credit" type="radio" value="True" checked="checked" id="creditTrue">
+                                                <span>Oui</span>
+                                            </label>
+                                            <label>
+                                                <input class="radio" onchange="simulerSalaire()" name="credit" type="radio" value="False" id="creditFalse">
+                                                <span>Non</span>
+                                            </label>
+                                        </div>
+                                        <div class="input-group col-4 d-inline">
+                                            <label class="control-label" id="creditValeur"> - </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 sebbox">
+                            <div class="card card-info">
+                                <div class="card-header">
+                                    <div class="header-block">
+                                        <p class="title"> Répartition de la valeur (en €)</p>
+                                    </div>
+                                </div>
+                                <div class="card-block">
+                                    <section class="example">
+                                        <div id="morris-donut-chart"></div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="js/morris.js"></script> 
+    <script src="js/khubai.js"></script> 
+    <script src="js/vendor.js"></script>
+    <script src="js/app.js"></script> 
+    <script>
+        new Morris.Donut({
+    // ID of the element in which to draw the chart.
+    element: 'morris-donut-chart',
+    // Chart data records -- each entry in this array corresponds to a point on
+    // the chart.
+    data: [
+        { label: 'remise client', value: 1000 },
+        { label: 'services obligatoires', value: 4000 },
+        { label: 'votre salaire', value: 5000 },
+        { label: 'services optionels ', value: 2000 }
+    ]
+    });
+</script>
+</body>
+</html>

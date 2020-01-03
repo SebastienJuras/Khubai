@@ -1,0 +1,7 @@
+Alignement bloc gauche texte / droite graphique
+Ajouter bloc client
+Mettre en évidence le total des revenue
+Faire une intro qui explique ce qu'est une ESN decentralisé
+Ajouter des help text dans la box revenu
+alignement des chiffres dans le box Revenu
+alignement de la hauteur dans le box Revenu
